@@ -1,0 +1,26 @@
+{
+    "name": "nazka/sermepa-omnipay",
+    "type": "symfony-bundle",
+    "description": "Sermepa (now Redsys) payment gateway implementation with omnipay",
+    "license": "GPLv2",
+    "authors": [
+        {
+            "name": "Javier Sampedro",
+            "email": "jsampedro77@gmail.com",
+            "homepage": "http://github.com/jsampedro77"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "omnipay/common": "2.*"
+    },
+    "autoload": {
+        "psr-0": { "Nazka\\SermepaOmnipay": "src/" }
+    },
+    "target-dir": "Nazka/SermepaOmnipay",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    }
+}
