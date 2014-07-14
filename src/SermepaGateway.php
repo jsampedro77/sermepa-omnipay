@@ -1,10 +1,10 @@
 <?php
 
-namespace MM\SermepaOmnipayBundle;
+namespace Nazka\SermepaOmnipay;
 
 use Symfony\Component\HttpFoundation\Request;
 use Omnipay\Common\AbstractGateway;
-use MM\SermepaOmnipayBundle\Gateway\Message\CallbackResponse;
+use Nazka\SermepaOmnipay\Gateway\Message\CallbackResponse;
 
 /**
  * Sermepa (Redsys) Gateway
