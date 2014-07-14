@@ -60,7 +60,7 @@ class SermepaGateway extends AbstractGateway
 
     public function purchase(array $parameters = array())
     {
-        return $this->createRequest('\Nazka\SermepaOmnipay\Gateway\Message\PurchaseRequest', $parameters);
+        return $this->createRequest('\Nazka\SermepaOmnipay\Message\PurchaseRequest', $parameters);
     }
 
     /**

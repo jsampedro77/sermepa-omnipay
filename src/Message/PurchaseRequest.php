@@ -15,6 +15,11 @@ class PurchaseRequest extends AbstractRequest
     protected $liveEndpoint = 'https://sis.sermepa.es';
     protected $testEndpoint = 'https://sis-t.redsys.es:25443';
 
+    public function sendData($data)
+    {
+        
+    }
+
     public function setTitular($titular)
     {
         return $this->setParameter('titular', $titular);
