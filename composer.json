@@ -15,9 +15,8 @@
         "omnipay/common": "2.*"
     },
     "autoload": {
-        "psr-4": { "Nazka\\SermepaOmnipay": "src/" }
+        "psr-4": { "Nazka\\SermepaOmnipay\\": "src/" }
     },
-    "target-dir": "Nazka/SermepaOmnipay",
     "extra": {
         "branch-alias": {
             "dev-master": "0.1.x-dev"
