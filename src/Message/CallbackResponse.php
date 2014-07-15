@@ -3,12 +3,15 @@
 namespace Omnipay\Sermepa\Message;
 
 use Symfony\Component\HttpFoundation\Request;
+use Omnipay\Sermepa\Exception\BadSignatureException;
+use Omnipay\Sermepa\Exception\CallbackException;
 
 /**
  * Sermepa (Redsys)  Callback Response
  */
 class CallbackResponse
 {
+
     private $request;
     private $merchantKey;
 
@@ -16,17 +19,30 @@ class CallbackResponse
     {
         $this->request = $request;
         $this->merchantKey = $merchantKey;
+        $this->error = '';
     }
 
+    /**
+     * Check callback response from tpv
+     * 
+     * @return boolean
+     * @throws BadSignatureException
+     * @throws CallbackException
+     */
     public function isSuccessful()
     {
         $data = $this->request->request->all();
-        //check response code "000" to "099"
-        if (100 > (int) $data['Ds_Response']) {
-            return $this->checkSignature($data);
-        } else {
-            return false;
+
+        if (!$this->checkSignature($data)) {
+            throw new BadSignatureException();
         }
+
+        //check response, code "000" to "099" means success
+        if ((int) $data['Ds_Response'] > 99) {
+            throw new CallbackException(null, (int) $data['Ds_Response']);
+        }
+
+        return true;
     }
 
     private function checkSignature($data)
