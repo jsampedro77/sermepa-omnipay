@@ -1,6 +1,6 @@
 <?php
 
-namespace Nazka\SermepaOmnipay\Message;
+namespace Omnipay\Sermepa\Message;
 
 use Symfony\Component\HttpFoundation\Request;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Nazka\SermepaOmnipay\Message;
+namespace Omnipay\Sermepa\Message;
 
 use Omnipay\Common\Message\AbstractRequest;
 

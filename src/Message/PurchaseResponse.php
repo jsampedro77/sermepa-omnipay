@@ -1,6 +1,6 @@
 <?php
 
-namespace Nazka\SermepaOmnipay\Message;
+namespace Omnipay\Sermepa;
 
 use Omnipay\Common\Message\AbstractResponse;
 use Symfony\Component\HttpFoundation\Response as HttpResponse;

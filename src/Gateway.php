@@ -1,10 +1,10 @@
 <?php
 
-namespace Nazka\SermepaOmnipay;
+namespace Omnipay\Sermepa;
 
 use Symfony\Component\HttpFoundation\Request;
 use Omnipay\Common\AbstractGateway;
-use Nazka\SermepaOmnipay\Gateway\Message\CallbackResponse;
+use Omnipay\Sermepa\Gateway\Message\CallbackResponse;
 
 /**
  * Sermepa (Redsys) Gateway
@@ -60,7 +60,7 @@ class Gateway extends AbstractGateway
 
     public function purchase(array $parameters = array())
     {
-        return $this->createRequest('\Nazka\SermepaOmnipay\Message\PurchaseRequest', $parameters);
+        return $this->createRequest('\Omnipay\Sermepa\Message\PurchaseRequest', $parameters);
     }
 
     /**
