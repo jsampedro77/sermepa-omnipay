@@ -4,7 +4,7 @@ namespace Omnipay\Sermepa;
 
 use Symfony\Component\HttpFoundation\Request;
 use Omnipay\Common\AbstractGateway;
-use Omnipay\Sermepa\Gateway\Message\CallbackResponse;
+use Omnipay\Sermepa\Message\CallbackResponse;
 
 /**
  * Sermepa (Redsys) Gateway
@@ -21,7 +21,7 @@ class Gateway extends AbstractGateway
             'consumerLanguage' => '001',
             'currency' => '978',
             'terminal' => '001',
-            'merchantUrl' => '',
+            'merchantURL' => '',
             'merchantName' => '',
             'transactionType' => '0',
             'signatureMode' => 'simple',
@@ -45,12 +45,34 @@ class Gateway extends AbstractGateway
         $this->setParameter('merchantCode', $merchantCode);
     }
 
-    public function setTerminal($terminal){
+    public function setMerchantURL($merchantURL)
+    {
+        $this->setParameter('merchantURL', $merchantURL);
+    }
+
+    public function setTerminal($terminal)
+    {
         $this->setParameter('terminal', $terminal);
     }
 
-    public function setSignatureMode($signatureMode){
+    public function setSignatureMode($signatureMode)
+    {
         $this->setParameter('signatureMode', $signatureMode);
+    }
+
+    public function setConsumerLanguage($consumerLanguage)
+    {
+        $this->setParameter('consumerLanguage', $consumerLanguage);
+    }
+
+    public function setReturnUrl($returnUrl)
+    {
+        $this->setParameter('returnUrl', $returnUrl);
+    }
+
+    public function setCancelUrl($cancelUrl)
+    {
+        $this->setParameter('cancelUrl', $cancelUrl);
     }
 
     public function getName()
@@ -60,7 +82,11 @@ class Gateway extends AbstractGateway
 
     public function purchase(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\Sermepa\Message\PurchaseRequest', $parameters);
+        if (isset($parameters['recurrent']) && $parameters['recurrent']) {
+            return $this->createRequest('\Omnipay\Sermepa\Message\RecurrentPurchaseRequest', $parameters);
+        } else {
+            return $this->createRequest('\Omnipay\Sermepa\Message\PurchaseRequest', $parameters);
+        }
     }
 
     /**

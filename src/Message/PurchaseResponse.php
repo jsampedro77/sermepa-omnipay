@@ -1,28 +1,38 @@
 <?php
 
-namespace Omnipay\Sermepa;
+namespace Omnipay\Sermepa\Message;
 
 use Omnipay\Common\Message\AbstractResponse;
-use Symfony\Component\HttpFoundation\Response as HttpResponse;
+use Omnipay\Common\Message\RedirectResponseInterface;
 
 /**
  * Sermepa (Redsys) Purchase Response
  */
-class PurchaseResponse extends AbstractResponse
+class PurchaseResponse extends AbstractResponse implements RedirectResponseInterface
 {
 
     public function isSuccessful()
     {
-        return true;
+        return false;
     }
 
     public function isRedirect()
     {
-        return false;
+        return true;
     }
 
-    public function getHttpResponse(){
+    public function getRedirectUrl()
+    {
+        return $this->getRequest()->getEndpoint();
+    }
 
-        return HttpResponse::create((string)$this->data);
+    public function getRedirectMethod()
+    {
+        return 'POST';
+    }
+
+    public function getRedirectData()
+    {
+        return $this->data;
     }
 }
