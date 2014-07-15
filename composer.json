@@ -15,7 +15,7 @@
         "omnipay/common": "2.*"
     },
     "autoload": {
-        "psr-4": { "Nazka\\SermepaOmnipay\\": "src/" }
+        "psr-4": { "Omnipay\\Sermepa\\": "src/" }
     },
     "extra": {
         "branch-alias": {

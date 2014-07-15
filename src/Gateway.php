@@ -11,7 +11,7 @@ use Nazka\SermepaOmnipay\Gateway\Message\CallbackResponse;
  *
  * @author Javier Sampedro <jsampedro77@gmail.com>
  */
-class SermepaGateway extends AbstractGateway
+class Gateway extends AbstractGateway
 {
 
     public function getDefaultParameters()
