@@ -12,7 +12,7 @@ use Omnipay\Common\Message\AbstractRequest;
 class PurchaseRequest extends AbstractRequest
 {
 
-    protected $liveEndpoint = 'https://sis.sermepa.es';
+    protected $liveEndpoint = 'https://sis.redsys.es';
     protected $testEndpoint = 'https://sis-t.redsys.es:25443';
 
     public function setOrder($order)
