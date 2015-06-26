@@ -1,4 +1,4 @@
 Nazka Sermepa
-==================
+=============
 
-Sermepa Payment Gateway over (Omnipay)[https://github.com/omnipay/omnipay]
+Sermepa/RedSys payment gateway for [Omnipay](https://github.com/omnipay/omnipay).
