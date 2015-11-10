@@ -3,6 +3,7 @@
 namespace Omnipay\Sermepa\Message;
 
 use Omnipay\Common\Message\AbstractRequest;
+use Omnipay\Sermepa\Encryptor\Encryptor;
 
 /**
  * Sermepa (Redsys) Purchase Request
@@ -84,10 +85,14 @@ class PurchaseRequest extends AbstractRequest
         $data['Ds_Merchant_UrlOK'] = $this->getReturnUrl();
         $data['Ds_Merchant_UrlKO'] = $this->getCancelUrl();
 
-        $data['Ds_Merchant_MerchantSignature'] = $this->generateSignature($data);
+        $merchantParameters = base64_encode(json_encode($data));
 
+        return array(
+            'Ds_MerchantParameters' => $merchantParameters,
+            'Ds_Signature' => $this->generateSignature($merchantParameters),
+            'Ds_SignatureVersion' => 'HMAC_SHA256_V1'
+        );
 
-        return $data;
     }
 
     public function sendData($data)
@@ -97,7 +102,7 @@ class PurchaseRequest extends AbstractRequest
 
     public function getEndpoint()
     {
-        return $this->getEndpointBase() . '/sis/realizarPago';
+        return $this->getEndpointBase().'/sis/realizarPago';
     }
 
     public function getEndpointBase()
@@ -105,20 +110,12 @@ class PurchaseRequest extends AbstractRequest
         return $this->getTestMode() ? $this->testEndpoint : $this->liveEndpoint;
     }
 
-    protected function generateSignature($data)
+    protected function generateSignature($merchantParameters)
     {
-        $message = $data['Ds_Merchant_Amount'] .
-                $data['Ds_Merchant_Order'] .
-                $data['Ds_Merchant_MerchantCode'] .
-                $data['Ds_Merchant_Currency'];
+        $key = base64_decode($this->getParameter('merchantKey'));
+        $key = Encryptor::encrypt_3DES($this->getToken(), $key);
+        $res = hash_hmac('sha256', $merchantParameters, $key, true);
 
-        if ('full' === $this->getParameter('signatureMode')) {
-            $message .= $data['Ds_Merchant_TransactionType'] .
-                    $data['Ds_Merchant_MerchantURL'];
-        }
-
-        $message .= $this->getParameter('merchantKey');
-
-        return sha1($message);
+        return base64_encode($res);
     }
 }

@@ -90,7 +90,7 @@ class Gateway extends AbstractGateway
     }
 
     /**
-     * 
+     *
      * @param \Symfony\Component\HttpFoundation\Request $request
      * @return type
      */
@@ -99,5 +99,10 @@ class Gateway extends AbstractGateway
         $response = new CallbackResponse($request, $this->getParameter('merchantKey'));
 
         return $response->isSuccessful();
+    }
+
+    public function decodeCallbackResponse(Request $request)
+    {
+        return json_decode(base64_decode(strtr($request->get('Ds_MerchantParameters'), '-_', '+/')), true);
     }
 }

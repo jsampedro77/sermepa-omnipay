@@ -2,6 +2,7 @@
 
 namespace Omnipay\Sermepa\Message;
 
+use Omnipay\Sermepa\Encryptor\Encryptor;
 use Symfony\Component\HttpFoundation\Request;
 use Omnipay\Sermepa\Exception\BadSignatureException;
 use Omnipay\Sermepa\Exception\CallbackException;
@@ -24,38 +25,38 @@ class CallbackResponse
 
     /**
      * Check callback response from tpv
-     * 
+     *
      * @return boolean
      * @throws BadSignatureException
      * @throws CallbackException
      */
     public function isSuccessful()
     {
-        $data = $this->request->request->all();
+        $rawParameters = $this->request->get('Ds_MerchantParameters');
 
-        if (!$this->checkSignature($data)) {
+        $decodedParameters = json_decode(base64_decode(strtr($rawParameters, '-_', '+/')), true);
+
+        if (!$this->checkSignature(
+            $rawParameters,
+            $decodedParameters['Ds_Order'],
+            $this->request->get('Ds_Signature')
+        )
+        ) {
             throw new BadSignatureException();
         }
 
         //check response, code "000" to "099" means success
-        if ((int) $data['Ds_Response'] > 99) {
-            throw new CallbackException(null, (int) $data['Ds_Response']);
+        if ((int)$decodedParameters['Ds_Response'] > 99) {
+            throw new CallbackException(null, (int)$decodedParameters['Ds_Response']);
         }
 
         return true;
     }
 
-    private function checkSignature($data)
+    private function checkSignature($data, $orderId, $expectedSignature)
     {
-        $message = $data['Ds_Amount'] .
-                $data['Ds_Order'] .
-                $data['Ds_MerchantCode'] .
-                $data['Ds_Currency'] .
-                $data['Ds_Response'] .
-                $this->merchantKey;
+        $key = Encryptor::encrypt_3DES($orderId, base64_decode($this->merchantKey));
 
-        $signature = strtoupper(sha1($message));
-
-        return ($signature == $data['Ds_Signature']);
+        return strtr(base64_encode(hash_hmac('sha256', $data, $key, true)), '+/', '-_') == $expectedSignature;
     }
 }
