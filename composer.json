@@ -8,6 +8,11 @@
             "name": "Javier Sampedro",
             "email": "jsampedro77@gmail.com",
             "homepage": "http://github.com/jsampedro77"
+        },
+        {
+            "name": "NitsNets Studio",
+            "email": "github@nitsnets.com",
+            "homepage": "http://www.nitsnets.com"
         }
     ],
     "minimum-stability": "dev",

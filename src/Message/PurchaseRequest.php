@@ -9,6 +9,7 @@ use Omnipay\Sermepa\Encryptor\Encryptor;
  * Sermepa (Redsys) Purchase Request
  *
  * @author Javier Sampedro <jsampedro77@gmail.com>
+ * @author NitsNets Studio <github@nitsnets.com>
  */
 class PurchaseRequest extends AbstractRequest
 {
@@ -56,6 +57,28 @@ class PurchaseRequest extends AbstractRequest
         return $this->setParameter('terminal', $terminal);
     }
 
+    /**
+     * Sets the identifier on the purchase request.
+     *
+     * @param string $identifier Identifier to be set on the purchase request
+     *
+     * @return object
+     */
+    public function setIdentifier($identifier)
+    {
+        return $this->setParameter('identifier', $identifier);
+    }
+
+    /**
+     * Gets the identifier parameter setup on the purchase request.
+     *
+     * @return mixed
+     */
+    public function getIdentifier()
+    {
+        return $this->getParameter('identifier');
+    }
+
     public function getTransactionType()
     {
         return '0';
@@ -69,6 +92,7 @@ class PurchaseRequest extends AbstractRequest
     public function getData()
     {
         $data = array();
+
         $data['Ds_Merchant_Amount'] = (float)$this->getAmount();
         $data['Ds_Merchant_Currency'] = $this->getCurrency();
         $data['Ds_Merchant_Order'] = $this->getToken();
@@ -84,6 +108,10 @@ class PurchaseRequest extends AbstractRequest
 
         $data['Ds_Merchant_UrlOK'] = $this->getReturnUrl();
         $data['Ds_Merchant_UrlKO'] = $this->getCancelUrl();
+
+        if (!empty($this->getParameter('identifier'))) {
+            $data['Ds_Merchant_Identifier'] = $this->getParameter('identifier');
+        }
 
         $merchantParameters = base64_encode(json_encode($data));
 
