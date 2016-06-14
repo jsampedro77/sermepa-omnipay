@@ -91,20 +91,20 @@ class PurchaseRequest extends AbstractRequest
 
     public function getData()
     {
-        $data = [];
+        $data = array();
 
-        $data['Ds_Merchant_Amount']             = (float)$this->getAmount();
-        $data['Ds_Merchant_Currency']           = $this->getCurrency();
-        $data['Ds_Merchant_Order']              = $this->getToken();
+        $data['Ds_Merchant_Amount'] = (float)$this->getAmount();
+        $data['Ds_Merchant_Currency'] = $this->getCurrency();
+        $data['Ds_Merchant_Order'] = $this->getToken();
         $data['Ds_Merchant_ProductDescription'] = $this->getDescription();
 
-        $data['Ds_Merchant_Titular']          = $this->getParameter('titular');
+        $data['Ds_Merchant_Titular'] = $this->getParameter('titular');
         $data['Ds_Merchant_ConsumerLanguage'] = $this->getParameter('consumerLanguage');
-        $data['Ds_Merchant_MerchantCode']     = $this->getParameter('merchantCode');
-        $data['Ds_Merchant_MerchantName']     = $this->getParameter('merchantName');
-        $data['Ds_Merchant_MerchantURL']      = $this->getParameter('merchantURL');
-        $data['Ds_Merchant_Terminal']         = $this->getParameter('terminal');
-        $data['Ds_Merchant_TransactionType']  = $this->getTransactionType();
+        $data['Ds_Merchant_MerchantCode'] = $this->getParameter('merchantCode');
+        $data['Ds_Merchant_MerchantName'] = $this->getParameter('merchantName');
+        $data['Ds_Merchant_MerchantURL'] = $this->getParameter('merchantURL');
+        $data['Ds_Merchant_Terminal'] = $this->getParameter('terminal');
+        $data['Ds_Merchant_TransactionType'] = $this->getTransactionType();
 
         $data['Ds_Merchant_UrlOK'] = $this->getReturnUrl();
         $data['Ds_Merchant_UrlKO'] = $this->getCancelUrl();
