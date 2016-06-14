@@ -10,6 +10,7 @@ use Omnipay\Sermepa\Message\CallbackResponse;
  * Sermepa (Redsys) Gateway
  *
  * @author Javier Sampedro <jsampedro77@gmail.com>
+ * @author NitsNets Studio <github@nitsnets.com>
  */
 class Gateway extends AbstractGateway
 {
@@ -73,6 +74,17 @@ class Gateway extends AbstractGateway
     public function setCancelUrl($cancelUrl)
     {
         $this->setParameter('cancelUrl', $cancelUrl);
+    }
+
+    /**
+     * Sets the identifier parameter. This parameter is used to flag in our request that we want a token back or to
+     * send our token.
+     *
+     * @param string $identifier
+     */
+    public function setIdentifier($identifier)
+    {
+        $this->setParameter('identifier', $identifier);
     }
 
     public function getName()
