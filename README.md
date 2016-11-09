@@ -30,6 +30,11 @@ Basic Usage
 For general usage instructions, please see the main [Omnipay](https://github.com/thephpleague/omnipay)
 repository.
 
+Aditional Parameter
+-----------
+
+If you want to avoid having to multiply the value by 100 just add a new parameter ( multiply=true ) to the purchase function. 
+
 Aditional Callback
 -----------
 Redsys has an additional callback ( Respuesta online ) that may be active in your redsys platform and therfore must be implemented. This new callback cannot follow the normal usage of Omnipay. 
