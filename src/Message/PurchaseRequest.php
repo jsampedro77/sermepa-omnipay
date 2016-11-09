@@ -89,11 +89,24 @@ class PurchaseRequest extends AbstractRequest
         $this->setParameter('signatureMode', $signatureMode);
     }
 
+    public function setMultiply($multiply)
+    {
+        return $this->setParameter('multiply', $multiply);
+    }
+
+    public function getAmount()
+    {
+        if($this->getParameter('multiply')) {
+            return (float)parent::getAmount() * 100;
+        }
+        return (float)parent::getAmount();
+    }
+
     public function getData()
     {
         $data = array();
 
-        $data['Ds_Merchant_Amount'] = (float)$this->getAmount();
+        $data['Ds_Merchant_Amount'] = $this->getAmount();
         $data['Ds_Merchant_Currency'] = $this->getCurrency();
         $data['Ds_Merchant_Order'] = $this->getToken();
         $data['Ds_Merchant_ProductDescription'] = $this->getDescription();
