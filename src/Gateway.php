@@ -102,13 +102,19 @@ class Gateway extends AbstractGateway
     }
 
     /**
-     *
      * @param \Symfony\Component\HttpFoundation\Request $request
-     * @return type
+     * @param bool $returnObject
+     * @return bool|CallbackResponse
+     * @throws Exception\BadSignatureException
+     * @throws Exception\CallbackException
      */
-    public function checkCallbackResponse(Request $request)
+    public function checkCallbackResponse(Request $request, $returnObject = false)
     {
         $response = new CallbackResponse($request, $this->getParameter('merchantKey'));
+
+        if($returnObject){
+            return $response;
+        }
 
         return $response->isSuccessful();
     }

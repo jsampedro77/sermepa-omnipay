@@ -29,3 +29,8 @@ Basic Usage
 
 For general usage instructions, please see the main [Omnipay](https://github.com/thephpleague/omnipay)
 repository.
+
+Aditional Callback
+-----------
+Redsys has an additional callback ( Respuesta online ) that may be active in your redsys platform and therfore must be implemented. This new callback cannot follow the normal usage of Omnipay. 
+You need to implement checkCallbackResponse() and decodeCallbackResponse().

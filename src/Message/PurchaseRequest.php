@@ -93,7 +93,7 @@ class PurchaseRequest extends AbstractRequest
     {
         $data = array();
 
-        $data['Ds_Merchant_Amount'] = (float)$this->getAmount();
+        $data['Ds_Merchant_Amount'] = (float)$this->getAmount()*100;
         $data['Ds_Merchant_Currency'] = $this->getCurrency();
         $data['Ds_Merchant_Order'] = $this->getToken();
         $data['Ds_Merchant_ProductDescription'] = $this->getDescription();
