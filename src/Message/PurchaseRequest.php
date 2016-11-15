@@ -102,6 +102,15 @@ class PurchaseRequest extends AbstractRequest
         return (float)parent::getAmount();
     }
 
+    public function getToken()
+    {
+        if(!empty($this->getTransactionId())) {
+            return $this->getTransactionId();
+        }
+
+        return parent::getToken();
+    }
+
     public function getData()
     {
         $data = array();
