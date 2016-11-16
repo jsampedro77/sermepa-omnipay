@@ -102,10 +102,10 @@ class PurchaseRequest extends AbstractRequest
         return (float)parent::getAmount();
     }
 
-    public function getToken()
+    public function getTransactionId()
     {
-        if(!empty($this->getTransactionId())) {
-            return $this->getTransactionId();
+        if(!empty(parent::getTransactionId())) {
+            return parent::getTransactionId();
         }
 
         return parent::getToken();
@@ -117,7 +117,7 @@ class PurchaseRequest extends AbstractRequest
 
         $data['Ds_Merchant_Amount'] = $this->getAmount();
         $data['Ds_Merchant_Currency'] = $this->getCurrency();
-        $data['Ds_Merchant_Order'] = $this->getToken();
+        $data['Ds_Merchant_Order'] = $this->getTransactionId();
         $data['Ds_Merchant_ProductDescription'] = $this->getDescription();
 
         $data['Ds_Merchant_Titular'] = $this->getParameter('titular');
