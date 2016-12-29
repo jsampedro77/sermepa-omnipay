@@ -163,7 +163,7 @@ class PurchaseRequest extends AbstractRequest
     protected function generateSignature($merchantParameters)
     {
         $key = base64_decode($this->getParameter('merchantKey'));
-        $key = Encryptor::encrypt_3DES($this->getToken(), $key);
+        $key = Encryptor::encrypt_3DES($this->getTransactionId(), $key);
         $res = hash_hmac('sha256', $merchantParameters, $key, true);
 
         return base64_encode($res);
