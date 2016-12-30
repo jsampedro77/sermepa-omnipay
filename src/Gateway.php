@@ -100,6 +100,11 @@ class Gateway extends AbstractGateway
             return $this->createRequest('\Omnipay\Sermepa\Message\PurchaseRequest', $parameters);
         }
     }
+    
+    public function completePurchase(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Sermepa\Message\CompletePurchaseRequest', $parameters);
+    }    
 
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
