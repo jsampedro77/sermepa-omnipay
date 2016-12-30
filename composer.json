@@ -17,7 +17,8 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "omnipay/common": "2.*"
+        "omnipay/common": "2.*",
+        "redsys/messages": "*"
     },
     "autoload": {
         "psr-4": { "Omnipay\\Sermepa\\": "src/" }
