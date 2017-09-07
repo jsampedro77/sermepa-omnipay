@@ -8,6 +8,7 @@ processing library for PHP 5.3+. This package implements RedSys (formerly Sermep
 
 Requirements
 ------------
+- PHP >= 5.3
 - Composer (`curl -s http://getcomposer.org/installer | php`)
 
 Installation
