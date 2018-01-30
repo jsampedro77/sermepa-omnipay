@@ -11,12 +11,7 @@ class Encryptor
 {
     static public function encrypt_3DES($message, $key)
     {
-        return mcrypt_encrypt(
-            MCRYPT_3DES,
-            $key,
-            $message,
-            MCRYPT_MODE_CBC,
-            implode(array_map("chr", array(0, 0, 0, 0, 0, 0, 0, 0)))
-        );
+        $l = ceil(strlen($message) / 8) * 8;
+        return substr(openssl_encrypt($message . str_repeat("\0", $l - strlen($message)), 'des-ede3-cbc', $key, OPENSSL_RAW_DATA, "\0\0\0\0\0\0\0\0"), 0, $l);
     }
 }
