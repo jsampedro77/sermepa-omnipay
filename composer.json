@@ -1,5 +1,5 @@
 {
-    "name": "urtzi/sermepa-omnipay",
+    "name": "urtzip/sermepa-omnipay",
     "type": "symfony-bundle",
     "description": "Sermepa (now Redsys) payment gateway implementation with omnipay",
     "license": "GPLv2",
