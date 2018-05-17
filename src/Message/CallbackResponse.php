@@ -12,7 +12,6 @@ use Omnipay\Sermepa\Exception\CallbackException;
  */
 class CallbackResponse
 {
-
     private $request;
     private $merchantKey;
 

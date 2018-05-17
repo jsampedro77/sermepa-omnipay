@@ -14,20 +14,19 @@ use Omnipay\Sermepa\Message\CallbackResponse;
  */
 class Gateway extends AbstractGateway
 {
-
     public function getDefaultParameters()
     {
-        return array(
+        return [
             'titular' => '',
             'consumerLanguage' => '001',
-            'currency' => '978',
+            'currency' => 'EUR',
             'terminal' => '001',
             'merchantURL' => '',
             'merchantName' => '',
             'transactionType' => '0',
             'signatureMode' => 'simple',
             'testMode' => false
-        );
+        ];
     }
 
     public function setMerchantName($merchantName)
@@ -75,6 +74,11 @@ class Gateway extends AbstractGateway
     {
         $this->setParameter('cancelUrl', $cancelUrl);
     }
+    
+    public function setCurrencyMerchant($currency)
+    {
+        $this->setParameter('merchantCurrency', $currency);
+    }
 
     /**
      * Sets the identifier parameter. This parameter is used to flag in our request that we want a token back or to
@@ -104,7 +108,7 @@ class Gateway extends AbstractGateway
     public function completePurchase(array $parameters = array())
     {
         return $this->createRequest('\Omnipay\Sermepa\Message\CompletePurchaseRequest', $parameters);
-    }    
+    }
 
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
@@ -117,7 +121,7 @@ class Gateway extends AbstractGateway
     {
         $response = new CallbackResponse($request, $this->getParameter('merchantKey'));
 
-        if($returnObject){
+        if ($returnObject) {
             return $response;
         }
 

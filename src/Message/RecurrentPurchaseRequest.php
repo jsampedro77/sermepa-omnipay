@@ -9,7 +9,6 @@ namespace Omnipay\Sermepa\Message;
  */
 class RecurrentPurchaseRequest extends PurchaseRequest
 {
-
     public function getTransactionType()
     {
         return 'L'; //L for initial transaction M for recurrent
