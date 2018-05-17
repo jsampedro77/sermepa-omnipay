@@ -1,31 +1,33 @@
 {
-    "name": "urtzip/sermepa-omnipay",
-    "type": "symfony-bundle",
-    "description": "Sermepa (now Redsys) payment gateway implementation with omnipay",
-    "license": "GPLv2",
-    "authors": [
-        {
-            "name": "Javier Sampedro",
-            "email": "jsampedro77@gmail.com",
-            "homepage": "http://github.com/jsampedro77"
-        },
-        {
-            "name": "NitsNets Studio",
-            "email": "github@nitsnets.com",
-            "homepage": "http://www.nitsnets.com"
-        }
-    ],
-    "minimum-stability": "dev",
-    "require": {
-        "omnipay/common": "2.*",
-        "redsys/messages": "*"
+  "name": "nazka/sermepa-omnipay",
+  "type": "symfony-bundle",
+  "description": "Sermepa (now Redsys) payment gateway implementation with omnipay",
+  "license": "GPLv2",
+  "authors": [
+    {
+      "name": "Javier Sampedro",
+      "email": "jsampedro77@gmail.com",
+      "homepage": "http://github.com/jsampedro77"
     },
-    "autoload": {
-        "psr-4": { "Omnipay\\Sermepa\\": "src/" }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.2.x-dev"
-        }
+    {
+      "name": "NitsNets Studio",
+      "email": "github@nitsnets.com",
+      "homepage": "http://www.nitsnets.com"
     }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "omnipay/common": "3.*",
+    "redsys/messages": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Omnipay\\Sermepa\\": "src/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.3.x-dev"
+    }
+  }
 }
