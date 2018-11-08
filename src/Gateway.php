@@ -14,6 +14,9 @@ use Omnipay\Sermepa\Message\CallbackResponse;
  */
 class Gateway extends AbstractGateway
 {
+    /**
+     * @return array
+     */
     public function getDefaultParameters()
     {
         return [
@@ -29,52 +32,82 @@ class Gateway extends AbstractGateway
         ];
     }
 
+    /**
+     * @param $merchantName
+     */
     public function setMerchantName($merchantName)
     {
         $this->setParameter('merchantName', $merchantName);
         $this->setParameter('titular', $merchantName); //is this right??
     }
 
+    /**
+     * @param $merchantKey
+     */
     public function setMerchantKey($merchantKey)
     {
         $this->setParameter('merchantKey', $merchantKey);
     }
 
+    /**
+     * @param $merchantCode
+     */
     public function setMerchantCode($merchantCode)
     {
         $this->setParameter('merchantCode', $merchantCode);
     }
 
+    /**
+     * @param $merchantURL
+     */
     public function setMerchantURL($merchantURL)
     {
         $this->setParameter('merchantURL', $merchantURL);
     }
 
+    /**
+     * @param $terminal
+     */
     public function setTerminal($terminal)
     {
         $this->setParameter('terminal', $terminal);
     }
 
+    /**
+     * @param $signatureMode
+     */
     public function setSignatureMode($signatureMode)
     {
         $this->setParameter('signatureMode', $signatureMode);
     }
 
+    /**
+     * @param $consumerLanguage
+     */
     public function setConsumerLanguage($consumerLanguage)
     {
         $this->setParameter('consumerLanguage', $consumerLanguage);
     }
 
+    /**
+     * @param $returnUrl
+     */
     public function setReturnUrl($returnUrl)
     {
         $this->setParameter('returnUrl', $returnUrl);
     }
 
+    /**
+     * @param $cancelUrl
+     */
     public function setCancelUrl($cancelUrl)
     {
         $this->setParameter('cancelUrl', $cancelUrl);
     }
-    
+
+    /**
+     * @param $currency
+     */
     public function setCurrencyMerchant($currency)
     {
         $this->setParameter('merchantCurrency', $currency);
@@ -91,11 +124,18 @@ class Gateway extends AbstractGateway
         $this->setParameter('identifier', $identifier);
     }
 
+    /**
+     * @return string
+     */
     public function getName()
     {
         return 'Sermepa';
     }
 
+    /**
+     * @param array $parameters
+     * @return \Omnipay\Common\Message\AbstractRequest|\Omnipay\Common\Message\RequestInterface
+     */
     public function purchase(array $parameters = array())
     {
         if (isset($parameters['recurrent']) && $parameters['recurrent']) {
@@ -104,7 +144,11 @@ class Gateway extends AbstractGateway
             return $this->createRequest('\Omnipay\Sermepa\Message\PurchaseRequest', $parameters);
         }
     }
-    
+
+    /**
+     * @param array $parameters
+     * @return \Omnipay\Common\Message\AbstractRequest|\Omnipay\Common\Message\RequestInterface
+     */
     public function completePurchase(array $parameters = array())
     {
         return $this->createRequest('\Omnipay\Sermepa\Message\CompletePurchaseRequest', $parameters);
@@ -128,6 +172,10 @@ class Gateway extends AbstractGateway
         return $response->isSuccessful();
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function decodeCallbackResponse(Request $request)
     {
         return json_decode(base64_decode(strtr($request->get('Ds_MerchantParameters'), '-_', '+/')), true);

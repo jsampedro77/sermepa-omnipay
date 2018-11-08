@@ -10,6 +10,9 @@ use Redsys\Messages\Messages;
  */
 class CompletePurchaseResponse extends AbstractResponse
 {
+    /**
+     * @return bool
+     */
     public function isSuccessful()
     {
         if ($this->data['success'] === true) {
@@ -19,6 +22,9 @@ class CompletePurchaseResponse extends AbstractResponse
         }
     }
 
+    /**
+     * @return string
+     */
     public function getMessage()
     {
         $messageData = Messages::getByCode($this->data['decodedParameters']['Ds_Response']);
@@ -35,11 +41,17 @@ class CompletePurchaseResponse extends AbstractResponse
         return $message;
     }
 
+    /**
+     * @return mixed
+     */
     public function getCode()
     {
         return $this->data['decodedParameters']['Ds_Response'];
     }
 
+    /**
+     * @return mixed
+     */
     public function getTransactionReference()
     {
         return $this->data['decodedParameters']['Ds_AuthorisationCode'];
