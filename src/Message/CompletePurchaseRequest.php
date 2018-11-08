@@ -5,13 +5,16 @@ namespace Omnipay\Sermepa\Message;
 use Symfony\Component\HttpFoundation\Request;
 use Omnipay\Sermepa\Encryptor\Encryptor;
 use Omnipay\Sermepa\Exception\BadSignatureException;
-use Omnipay\Sermepa\Exception\CallbackException;
 
 /**
  * Sermepa (Redsys) Complete Purchase Request
  */
 class CompletePurchaseRequest extends PurchaseRequest
 {
+    /**
+     * @return array
+     * @throws BadSignatureException
+     */
     public function getData()
     {
         $request = Request::createFromGlobals();
@@ -42,11 +45,21 @@ class CompletePurchaseRequest extends PurchaseRequest
         ];
     }
 
+    /**
+     * @param $data
+     * @return CompletePurchaseResponse|PurchaseResponse
+     */
     public function sendData($data)
     {
         return $this->response = new CompletePurchaseResponse($this, $data);
     }
 
+    /**
+     * @param $data
+     * @param $orderId
+     * @param $expectedSignature
+     * @return bool
+     */
     private function checkSignature($data, $orderId, $expectedSignature)
     {
         $key = Encryptor::encrypt_3DES($orderId, base64_decode($this->getParameter('merchantKey')));
