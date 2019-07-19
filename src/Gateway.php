@@ -136,6 +136,24 @@ class Gateway extends AbstractGateway
      * @param array $parameters
      * @return \Omnipay\Common\Message\AbstractRequest|\Omnipay\Common\Message\RequestInterface
      */
+    public function authorize(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Sermepa\Message\AuthorizeRequest', $parameters);
+    }
+
+    /**
+     * @param array $parameters
+     * @return \Omnipay\Common\Message\AbstractRequest|\Omnipay\Common\Message\RequestInterface
+     */
+    public function completeAuthorize(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Sermepa\Message\CompleteAuthorizeRequest', $parameters);
+    }
+
+    /**
+     * @param array $parameters
+     * @return \Omnipay\Common\Message\AbstractRequest|\Omnipay\Common\Message\RequestInterface
+     */
     public function purchase(array $parameters = array())
     {
         if (isset($parameters['recurrent']) && $parameters['recurrent']) {
