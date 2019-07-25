@@ -56,4 +56,12 @@ class CompletePurchaseResponse extends AbstractResponse
     {
         return $this->data['decodedParameters']['Ds_AuthorisationCode'];
     }
+    
+    /**
+     * @return string
+     */
+    public function getTransactionId()
+    {
+        return $this->data['decodedParameters']['Ds_Order'];
+    }
 }
