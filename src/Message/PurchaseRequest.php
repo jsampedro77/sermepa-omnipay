@@ -175,7 +175,7 @@ class PurchaseRequest extends AbstractRequest
             return strval((float)parent::getAmount() * 100);
         }
 
-        return (float)parent::getAmount();
+        return strval((float)parent::getAmount());
     }
 
     /**
