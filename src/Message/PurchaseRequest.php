@@ -172,7 +172,7 @@ class PurchaseRequest extends AbstractRequest
     public function getAmount()
     {
         if ($this->getParameter('multiply')) {
-            return (float)parent::getAmount() * 100;
+            return strval((float)parent::getAmount() * 100);
         }
 
         return (float)parent::getAmount();
