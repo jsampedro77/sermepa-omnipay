@@ -38,7 +38,6 @@ class Gateway extends AbstractGateway
     public function setMerchantName($merchantName)
     {
         $this->setParameter('merchantName', $merchantName);
-        $this->setParameter('titular', $merchantName); //is this right??
     }
 
     /**
