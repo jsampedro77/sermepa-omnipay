@@ -10,29 +10,43 @@ use Omnipay\Common\Message\RedirectResponseInterface;
  */
 class PurchaseResponse extends AbstractResponse implements RedirectResponseInterface
 {
-
+    /**
+     * @return bool
+     */
     public function isSuccessful()
     {
         return false;
     }
 
+    /**
+     * @return bool
+     */
     public function isRedirect()
     {
         return true;
     }
 
-    public function getRedirectUrl()
-    {
-        return $this->getRequest()->getEndpoint();
-    }
-
+    /**
+     * @return string
+     */
     public function getRedirectMethod()
     {
         return 'POST';
     }
 
+    /**
+     * @return array|mixed
+     */
     public function getRedirectData()
     {
         return $this->data;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRedirectUrl()
+    {
+        return $this->getRequest()->getEndpoint();
     }
 }

@@ -12,10 +12,15 @@ use Omnipay\Sermepa\Exception\CallbackException;
  */
 class CallbackResponse
 {
-
     private $request;
     private $merchantKey;
+    private $error;
 
+    /**
+     * CallbackResponse constructor.
+     * @param Request $request
+     * @param $merchantKey
+     */
     public function __construct(Request $request, $merchantKey)
     {
         $this->request = $request;
@@ -53,6 +58,12 @@ class CallbackResponse
         return true;
     }
 
+    /**
+     * @param $data
+     * @param $orderId
+     * @param $expectedSignature
+     * @return bool
+     */
     private function checkSignature($data, $orderId, $expectedSignature)
     {
         $key = Encryptor::encrypt_3DES($orderId, base64_decode($this->merchantKey));
