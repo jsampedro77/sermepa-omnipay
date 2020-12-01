@@ -654,6 +654,6 @@ class Purchase3dsRequest extends PurchaseRequest
             "shipIndicator" => $this->getParameter('shipIndicator'),
             
         ];
-        return $data;
+        return json_encode($data);
     }
 }
