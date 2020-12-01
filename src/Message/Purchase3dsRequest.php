@@ -73,8 +73,8 @@ class Purchase3dsRequest extends PurchaseRequest
             "subscriber" => substr($this->getParameter('mobilePhone'), 0, 15)
         ];
         $data['workPhone'] = [
-            "cc" => substr($this->getParameter('mobilePhonePrefix'), 0, 3),
-            "subscriber" => substr($this->getParameter('mobilePhone'), 0, 15)
+            "cc" => substr($this->getParameter('workPhonePrefix'), 0, 3),
+            "subscriber" => substr($this->getParameter('workPhone'), 0, 15)
         ];
     
         $data['shipAddrLine1'] = substr($this->getParameter('shipAddrLine1'), 0, 50);
