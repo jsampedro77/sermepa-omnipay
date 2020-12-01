@@ -16,6 +16,526 @@ use \Money\Currency;
 class Purchase3dsRequest extends PurchaseRequest
 {
     /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setCardholderName($value)
+    {
+        return $this->setParameter('cardholderName', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setEmail($value)
+    {
+        return $this->setParameter('email', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setHomePhonePrefix($value)
+    {
+        return $this->setParameter('homePhonePrefix', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setHomePhone($value)
+    {
+        return $this->setParameter('homePhone', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setMobilePhonePrefix($value)
+    {
+        return $this->setParameter('mobilePhonePrefix', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setMobilePhone($value)
+    {
+        return $this->setParameter('mobilePhone', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setWorkPhonePrefix($value)
+    {
+        return $this->setParameter('workPhonePrefix', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setWorkPhone($value)
+    {
+        return $this->setParameter('workPhone', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setShipAddrLine1($value)
+    {
+        return $this->setParameter('shipAddrLine1', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setShipAddrLine2($value)
+    {
+        return $this->setParameter('shipAddrLine2', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setShipAddrLine3($value)
+    {
+        return $this->setParameter('shipAddrLine3', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setShipAddrCity($value)
+    {
+        return $this->setParameter('shipAddrCity', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setShipAddrPostCode($value)
+    {
+        return $this->setParameter('shipAddrPostCode', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setShipAddrState($value)
+    {
+        return $this->setParameter('shipAddrState', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setShipAddrCountry($value)
+    {
+        return $this->setParameter('shipAddrCountry', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setBillAddrLine1($value)
+    {
+        return $this->setParameter('billAddrLine1', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setBillAddrLine2($value)
+    {
+        return $this->setParameter('billAddrLine2', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setBillAddrLine3($value)
+    {
+        return $this->setParameter('billAddrLine3', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setBillAddrCity($value)
+    {
+        return $this->setParameter('billAddrCity', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setBillAddrPostCode($value)
+    {
+        return $this->setParameter('billAddrPostCode', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setBillAddrState($value)
+    {
+        return $this->setParameter('billAddrState', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setBillAddrCountry($value)
+    {
+        return $this->setParameter('billAddrCountry', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setAddrMatch($value)
+    {
+        return $this->setParameter('addrMatch', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setChallengeWindowSize($value)
+    {
+        return $this->setParameter('challengeWindowSize', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setAcctID($value)
+    {
+        return $this->setParameter('acctID', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setThreeDSReqAuthMethod($value)
+    {
+        return $this->setParameter('threeDSReqAuthMethod', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setThreeDSReqAuthTimestamp($value)
+    {
+        return $this->setParameter('threeDSReqAuthTimestamp', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setChAccAgeInd($value)
+    {
+        return $this->setParameter('chAccAgeInd', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setChAccDate($value)
+    {
+        return $this->setParameter('chAccDate', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setChAccChange($value)
+    {
+        return $this->setParameter('chAccChange', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setChAccChangeInd($value)
+    {
+        return $this->setParameter('chAccChangeInd', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function sethAccPwChange($value)
+    {
+        return $this->setParameter('chAccPwChange', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setChAccPwChangeInd($value)
+    {
+        return $this->setParameter('chAccPwChangeInd', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setNbPurchaseAccount($value)
+    {
+        return $this->setParameter('nbPurchaseAccount', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setProvisionAttemptsDay($value)
+    {
+        return $this->setParameter('provisionAttemptsDay', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setTxnActivityDay($value)
+    {
+        return $this->setParameter('txnActivityDay', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setTxnActivityYear($value)
+    {
+        return $this->setParameter('txnActivityYear', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setPaymentAccAge($value)
+    {
+        return $this->setParameter('paymentAccAge', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setPaymentAccInd($value)
+    {
+        return $this->setParameter('paymentAccInd', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setShipAddressUsage($value)
+    {
+        return $this->setParameter('shipAddressUsage', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setShipAddressUsageInd($value)
+    {
+        return $this->setParameter('shipAddressUsageInd', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setShipNameIndicator($value)
+    {
+        return $this->setParameter('shipNameIndicator', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setSuspiciousAccActivity($value)
+    {
+        return $this->setParameter('suspiciousAccActivity', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setDeliveryEmailAddress($value)
+    {
+        return $this->setParameter('deliveryEmailAddress', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setDeliveryTimeframe($value)
+    {
+        return $this->setParameter('deliveryTimeframe', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setGiftCardAmount($value)
+    {
+        return $this->setParameter('giftCardAmount', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setGiftCardCount($value)
+    {
+        return $this->setParameter('giftCardCount', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setGiftCardCurr($value)
+    {
+        return $this->setParameter('giftCardCurr', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setPreOrderDate($value)
+    {
+        return $this->setParameter('preOrderDate', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setPreOrderPurchaseInd($value)
+    {
+        return $this->setParameter('preOrderPurchaseInd', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setReorderItemsInd($value)
+    {
+        return $this->setParameter('reorderItemsInd', $value);
+    }
+    
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
+     */
+    public function setShipIndicator($value)
+    {
+        return $this->setParameter('shipIndicator', $value);
+    }
+    
+    /**
      * @return array|mixed
      * @throws \Omnipay\Common\Exception\InvalidRequestException
      */
