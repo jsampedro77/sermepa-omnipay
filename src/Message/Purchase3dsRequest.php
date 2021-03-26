@@ -330,7 +330,7 @@ class Purchase3dsRequest extends PurchaseRequest
      *
      * @return \Omnipay\Sermepa\Message\Purchase3dsRequest
      */
-    public function sethAccPwChange($value)
+    public function setChAccPwChange($value)
     {
         return $this->setParameter('chAccPwChange', $value);
     }
