@@ -156,9 +156,17 @@ class Gateway extends AbstractGateway
     public function purchase(array $parameters = array())
     {
         if (isset($parameters['recurrent']) && $parameters['recurrent']) {
-            return $this->createRequest('\Omnipay\Sermepa\Message\RecurrentPurchaseRequest', $parameters);
+            if (isset($parameters['3ds']) && $parameters['3ds']) {
+                return $this->createRequest('\Omnipay\Sermepa\Message\RecurrentPurchase3dsRequest', $parameters);
+            } else {
+                return $this->createRequest('\Omnipay\Sermepa\Message\RecurrentPurchaseRequest', $parameters);
+            }
         } else {
-            return $this->createRequest('\Omnipay\Sermepa\Message\PurchaseRequest', $parameters);
+            if (isset($parameters['3ds']) && $parameters['3ds']) {
+                return $this->createRequest('\Omnipay\Sermepa\Message\Purchase3dsRequest', $parameters);
+            } else {
+                return $this->createRequest('\Omnipay\Sermepa\Message\PurchaseRequest', $parameters);
+            }
         }
     }
 
