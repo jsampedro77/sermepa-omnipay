@@ -642,18 +642,48 @@ class Purchase3dsRequest extends PurchaseRequest
             "shipNameIndicator" => $this->getParameter('shipNameIndicator'),
             'suspiciousAccActivity' => $this->getParameter('suspiciousAccActivity'),
         ];
-        $data['merchantRiskIndicator'] = [
-            "deliveryEmailAddress" => $this->getParameter('deliveryEmailAddress'),
-            "deliveryTimeframe" => $this->getParameter('deliveryTimeframe'),
-            "giftCardAmount" => $this->getParameter('giftCardAmount'),
-            "giftCardCount" => $this->getParameter('giftCardCount'),
-            "giftCardCurr" => $this->getParameter('giftCardCurr'),
-            "preOrderDate" => $this->getParameter('preOrderDate'),
-            "preOrderPurchaseInd" => $this->getParameter('preOrderPurchaseInd'),
-            "reorderItemsInd" => $this->getParameter('reorderItemsInd'),
-            "shipIndicator" => $this->getParameter('shipIndicator'),
-            
-        ];
+        
+        $riskIndicator= [];
+        if ($this->getParameter('deliveryEmailAddress')) {
+            $riskIndicator['deliveryEmailAddress'] = $this->getParameter('deliveryEmailAddress');
+        }
+        
+        if ($this->getParameter('deliveryTimeframe')) {
+            $riskIndicator["deliveryTimeframe"] = $this->getParameter('deliveryTimeframe');
+        }
+    
+        if ($this->getParameter('giftCardAmount')) {
+            $riskIndicator["giftCardAmount"] = $this->getParameter('giftCardAmount');
+        }
+    
+        if ($this->getParameter('giftCardCount')) {
+            $riskIndicator["giftCardCount"] = $this->getParameter('giftCardCount');
+        }
+    
+        if ($this->getParameter('giftCardCurr')) {
+            $riskIndicator["giftCardCurr"] = $this->getParameter('giftCardCurr');
+        }
+    
+        if ($this->getParameter('preOrderDate')) {
+            $riskIndicator["preOrderDate"] = $this->getParameter('preOrderDate');
+        }
+    
+        if ($this->getParameter('preOrderPurchaseInd')) {
+            $riskIndicator["preOrderPurchaseInd"] = $this->getParameter('preOrderPurchaseInd');
+        }
+    
+        if ($this->getParameter('reorderItemsInd')) {
+            $riskIndicator["reorderItemsInd"] = $this->getParameter('reorderItemsInd');
+        }
+        
+        if ($this->getParameter('shipIndicator')) {
+            $riskIndicator["shipIndicator"] = $this->getParameter('shipIndicator');
+        }
+        
+        if (count($riskIndicator) > 0) {
+            $data['merchantRiskIndicator'] = $riskIndicator;
+        }
+        
         return json_encode($data);
     }
 }
