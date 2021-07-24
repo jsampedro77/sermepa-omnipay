@@ -239,7 +239,7 @@ class PurchaseRequest extends AbstractRequest
     /**
      * @return int
      */
-    private function getCurrencyRedsys()
+    protected function getCurrencyRedsys()
     {
         $currencies = new ISOCurrencies();
 
